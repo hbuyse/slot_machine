@@ -137,3 +137,7 @@ Temporary Items
 ### Databases ###
 
 *.db
+
+
+### Personnal Ignore ###
+doxygen/
