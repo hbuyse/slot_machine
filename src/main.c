@@ -69,8 +69,16 @@ int main(void)
         dump_player(player);
 
 
+        // Place the bet
+        player.bet      = get_bet();
+
+
+        // Print the player's informations
+        dump_player(player);
+
+
         // Ask if we continue
-        continuing  = ask_continue();
+        continuing      = ask_continue();
     }
     while ( ( (continuing == 'y') || (continuing == 'Y') ) && (player.credits > 0) );
 

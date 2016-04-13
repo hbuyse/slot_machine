@@ -11,6 +11,7 @@
 
 #define ZERO_ASCII 48
 
+
 /**
  * \brief      Purge the standard input
  */
