@@ -10,8 +10,6 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
-#define PLAYER_NAME_LENGTH 256          ///< Length of the player name
-
 
 /**
  * @struct Player_s

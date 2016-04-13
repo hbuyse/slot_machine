@@ -10,7 +10,7 @@
 #include <stdio.h>          // printf, scanf
 
 #include "player.h"          // Player_t, dump_player
-#include "game.h"           // get_bet
+#include "game.h"           // get_bet, ask_continue
 
 #define PLAYER_NAME "Henri Buyse "          ///< Player's name
 #define STARTING_CREDITS 100          ///< Credits at the beginnig of the game
