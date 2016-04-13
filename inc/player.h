@@ -4,8 +4,16 @@
  * @brief Header file containing all informations and functions about players
  */
 
+#ifndef __PLAYER_H__
+#define __PLAYER_H__
+
 #define PLAYER_NAME_LENGTH 256          ///< Length of the player name
 
+
+/**
+ * @struct Player_t
+ * @brief Struture containing all informations about the player
+ */
 typedef struct Player_s {
     char *name;          ///< Name of the player
     unsigned short credits;                ///< Player's credits
@@ -60,3 +68,6 @@ unsigned short get_player_gain(Player_t p);
  * \return     The player bet.
  */
 unsigned char get_player_bet(Player_t p);
+
+
+#endif          // __PLAYER_H__
