@@ -9,6 +9,8 @@
 
 #include <stdio.h>          // printf, scanf, EOF
 
+#define ZERO_ASCII 48
+
 /**
  * \brief      Purge the standard input
  */
@@ -25,6 +27,28 @@ static void purge(void)
 
 
 
+unsigned char ask_continue(void)
+{
+    int     continuing = 'y';
+
+
+    do
+    {
+        // Get the entry
+        printf("Do you want to continue ? : ");
+        continuing = fgetc(stdin);
+
+
+        // Purge the standard input
+        purge();
+    }
+    while ( (continuing != 'y') && (continuing != 'Y') && (continuing != 'n') && (continuing != 'N') );
+
+    return (continuing);
+}
+
+
+
 unsigned char get_bet(void)
 {
     unsigned int        bet     = 0; // Bet
@@ -36,10 +60,12 @@ unsigned char get_bet(void)
         // Get the entry
         printf("Enter your bet ([1:3]): ");
         bet = fgetc(stdin);
+
+
         // Purge the standard input
         purge();
 
-        bet -= 48;
+        bet -= ZERO_ASCII;
 
         if ( (bet < 1) || (bet > 3) )
         {

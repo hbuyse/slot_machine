@@ -25,7 +25,7 @@
  */
 int main(void)
 {
-    unsigned char       continuing  = 1;
+    char                continuing  = 'y';
 
 
     // Create the player
@@ -70,9 +70,9 @@ int main(void)
 
 
         // Ask if we continue
-        continuing  = 1;
+        continuing  = ask_continue();
     }
-    while ( (continuing) && (player.credits > 0) );
+    while ( ( (continuing == 'y') || (continuing == 'Y') ) && (player.credits > 0) );
 
     return (0);
 }
