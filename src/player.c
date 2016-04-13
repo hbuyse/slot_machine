@@ -15,7 +15,9 @@ void dump_player(Player_t player)
     printf("Name: %s\n", player.name);
     printf("\t> Credits: %u\n", player.credits);
     printf("\t> Gain: %u\n", player.gain);
+#ifdef PRINT_BET
     printf("\t> Bet: %u\n", player.bet);
+#endif
 }
 
 
