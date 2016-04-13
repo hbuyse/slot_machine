@@ -18,6 +18,11 @@
 #define STARTING_BET 1          ///< Bet at the beginnig of the game
 
 
+/**
+ * @brief      Main program
+ *
+ * @return     Error code for the OS
+ */
 int main(void)
 {
     unsigned char       continuing  = 1;

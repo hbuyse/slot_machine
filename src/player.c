@@ -1,4 +1,7 @@
 /**
+ * @author hbuyse
+ * @date 13/04/2016
+ *
  * @file player.c
  *
  * @brief Source file containing the functions about players

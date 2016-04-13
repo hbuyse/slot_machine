@@ -1,4 +1,7 @@
 /**
+ * @author hbuyse
+ * @date 13/04/2016
+ *
  * @file game.c
  *
  * @brief Source file containing the functions about the game
@@ -6,6 +9,9 @@
 
 #include <stdio.h>          // printf, scanf, EOF
 
+/**
+ * \brief      Purge the standard input
+ */
 static void purge(void)
 {
     int     c;
@@ -27,8 +33,10 @@ unsigned char get_bet(void)
 
     do
     {
+        // Get the entry
         printf("Enter your bet ([1:3]): ");
         bet = fgetc(stdin);
+        // Purge the standard input
         purge();
 
         bet -= 48;

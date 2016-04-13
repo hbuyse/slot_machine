@@ -1,4 +1,7 @@
 /**
+ * @author hbuyse
+ * @date 13/04/2016
+ *
  * @file player.h
  *
  * @brief Header file containing all informations and functions about players
@@ -11,61 +14,68 @@
 
 
 /**
- * @struct Player_t
+ * @struct Player_s
  * @brief Struture containing all informations about the player
  */
-typedef struct Player_s {
+struct Player_s {
     char *name;          ///< Name of the player
     unsigned short credits;                ///< Player's credits
     unsigned short gain;                   ///< Player's gain
     unsigned char bet;                    ///< Player's bet on the current round
-} Player_t;
+};
 
 
 /**
- * \brief      Display all informations on the player
+ * @typedef Player_t
+ * @brief Type definition of the structure Player_s
+ */
+typedef struct Player_s Player_t;
+
+
+/**
+ * @brief      Display all informations on the player
  *
- * \param[in]  player  The player we want to check the infos
+ * @param[in]  player  The player we want to check the infos
  */
 void dump_player(Player_t player);
 
 
 /**
- * \brief      Get the player name.
+ * @brief      Get the player name.
  *
- * \param[in]  p     The player concerned
+ * @param[in]  p     The player concerned
  *
- * \return     The player name.
+ * @return     The player name.
  */
 char* get_player_name(Player_t p);
 
 
 /**
- * \brief      Get the player credits.
+ * @brief      Get the player credits.
  *
- * \param[in]  p     The player concerned
+ * @param[in]  p     The player concerned
  *
- * \return     The player credits.
+ * @return     The player credits.
  */
 unsigned short get_player_credits(Player_t p);
 
 
 /**
- * \brief      Get the player gain.
+ * @brief      Get the player gain.
  *
- * \param[in]  p     The player concerned
+ * @param[in]  p     The player concerned
  *
- * \return     The player gain.
+ * @return     The player gain.
  */
 unsigned short get_player_gain(Player_t p);
 
 
 /**
- * \brief      Get the player bet.
+ * @brief      Get the player bet.
  *
- * \param[in]  p     The player concerned
+ * @param[in]  p     The player concerned
  *
- * \return     The player bet.
+ * @return     The player bet.
  */
 unsigned char get_player_bet(Player_t p);
 
