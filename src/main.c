@@ -61,8 +61,8 @@ int main(void)
     // Main loop
     do
     {
-        // Place the bet
-        player.bet  = get_bet();
+        // Add the profit to the player's credits
+        player.credits  += player.gain;
 
 
         // Print the informations
