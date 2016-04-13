@@ -38,6 +38,26 @@ int main(void)
     };
 
 
+#ifdef PRINT_COMBINATION
+    unsigned char       i           = 0;
+    unsigned char       j           = 0;
+    unsigned char       k           = 0;
+
+    char                tab[6]      = {'B', 'E', 'L', 'N', 'O', 'S'};
+
+    for ( i = 0; i < sizeof(tab); ++i )
+    {
+        for ( j = 0; j < sizeof(tab); ++j )
+        {
+            for ( k = 0; k < sizeof(tab); ++k )
+            {
+                printf("%c%c%c\n", tab[i], tab[j], tab[k]);
+            }
+        }
+    }
+#endif
+
+
     // Main loop
     do
     {
