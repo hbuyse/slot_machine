@@ -8,6 +8,7 @@
  */
 
 #include <stdio.h>          // printf, scanf, EOF
+#include <stdlib.h>         // srand, rand, NULL
 
 #define ZERO_ASCII 48
 
@@ -81,4 +82,10 @@ unsigned char get_bet(void)
     while ( bet_nok );
 
     return (bet);
+}
+
+
+unsigned int get_random_mod(unsigned int modulo)
+{
+    return rand() % modulo;
 }
