@@ -19,7 +19,6 @@
 #define STARTING_GAIN 0          ///< Gain at the beginning of the game
 #define STARTING_BET 1          ///< Bet at the beginnig of the game
 
-
 /**
  * @var belnos
  * @brief   Letters used for the program
@@ -79,6 +78,8 @@ int main(void)
 
         // Place the bet
         player.bet      = get_bet();
+
+        player.gain = run_game();
 
 
         // Print the player's informations

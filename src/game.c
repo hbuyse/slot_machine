@@ -10,7 +10,10 @@
 #include <stdio.h>          // printf, scanf, EOF
 #include <stdlib.h>         // srand, rand, NULL
 
+#include "big_letters.h"    // BIG_B, BIG_E, BIG_L, BIG_N, BIG_O, BIG_S
+
 #define ZERO_ASCII 48
+#define LETTERS_PER_ROUND 3
 
 
 /**
@@ -88,4 +91,31 @@ unsigned char get_bet(void)
 unsigned int get_random_mod(unsigned int modulo)
 {
     return rand() % modulo;
+}
+
+
+unsigned short run_game(void)
+{
+    unsigned short gain = 0;        // Gain from the round
+    unsigned char  tab_res[LETTERS_PER_ROUND];      // Store the three res
+    unsigned char i = 0;            // For loops
+
+    for (i = 0; i < LETTERS_PER_ROUND; ++i)
+    {
+        tab_res[i] = get_random_mod(6);
+        printf("%u", tab_res[i]);
+    }
+    printf("\n");
+
+    return gain;
+}
+
+void display_results(unsigned char tab_res[])
+{
+    unsigned char i = 0;
+
+    for(i = 0; i < sizeof(tab_res); ++i)
+    {
+        printf("%u", tab_res[i]);
+    }
 }
