@@ -1,6 +1,8 @@
 SLOT MACHINE SIMULATOR
 ======================
 
+[![Build Status](https://travis-ci.org/hbuyse/slot_machine.svg?branch=master)](https://travis-ci.org/hbuyse/slot_machine)
+
 Objectifs du projet
 -------------------
 Ce projet consiste à programmer en langage C un simulateur de machine à sous.
