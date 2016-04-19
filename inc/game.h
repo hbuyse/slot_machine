@@ -26,6 +26,7 @@ unsigned char ask_continue(void);
  */
 unsigned char get_bet(void);
 
+
 /**
  * @brief      Get a random number using a modulo.
  *
@@ -35,10 +36,8 @@ unsigned char get_bet(void);
  */
 unsigned int get_random_mod(unsigned int modulo);
 
+
 unsigned short run_game(void);
-
-void display_results(unsigned char tab_res[]);
-
 
 
 #endif          // __GAME_H__
