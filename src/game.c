@@ -55,7 +55,7 @@ unsigned char ask_continue(void)
 
 
 
-unsigned char get_bet(void)
+unsigned char get_bet(unsigned short credits)
 {
     unsigned int        bet     = 0; // Bet
     unsigned char       bet_nok = 1; // Bet OK or not OK?
@@ -75,6 +75,11 @@ unsigned char get_bet(void)
 
         if ( (bet < 1) || (bet > 3) )
         {
+            bet_nok = 1;          // Bet Not OK
+        }
+        else if ( bet > credits )
+        {
+            printf("You can not bet more than you currently have (bet = %u, credits = %u).\n", bet, credits);
             bet_nok = 1;          // Bet Not OK
         }
         else

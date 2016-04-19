@@ -22,9 +22,11 @@ unsigned char ask_continue(void);
 /**
  * @brief      Get the bet from the stdin
  *
+ * @param[in]  Current credits from the player
+ *
  * @return     The bet.
  */
-unsigned char get_bet(void);
+unsigned char get_bet(unsigned short credits);
 
 
 /**

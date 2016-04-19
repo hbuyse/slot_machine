@@ -56,7 +56,8 @@ int main(void)
 
 
         // Place the bet
-        player.bet      = get_bet();
+        player.bet      = get_bet(player.credits);
+        player.credits  -= player.bet;
         player.gain     = run_game() * player.bet;
 
 
