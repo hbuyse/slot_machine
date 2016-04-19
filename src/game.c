@@ -16,12 +16,6 @@
 #define LETTERS_PER_ROUND 3
 
 
-/**
- * @var belnos
- * @brief   Letters used for the program
- */
-static const char     belnos[] = {'B', 'E', 'L', 'N', 'O', 'S'};
-
 
 /**
  * \brief      Purge the standard input
