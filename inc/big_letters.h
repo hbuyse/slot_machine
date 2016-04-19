@@ -10,9 +10,10 @@
 #ifndef __BIG_LETTERS_H__
 #define __BIG_LETTERS_H__
 
-#define BIG_LETTERS_LENGTH  11
+#define BIG_LETTERS_LENGTH 11
 
-char* BIG_B[BIG_LETTERS_LENGTH] = {
+char        *BIG_B[BIG_LETTERS_LENGTH] =
+{
     " .----------------. ",
     "| .--------------. |",
     "| |   ______     | |",
@@ -26,7 +27,8 @@ char* BIG_B[BIG_LETTERS_LENGTH] = {
     " '----------------' "
 };
 
-char* BIG_E[BIG_LETTERS_LENGTH] = {
+char        *BIG_E[BIG_LETTERS_LENGTH] =
+{
     "  .----------------.  ",
     " | .--------------. | ",
     " | |  _________   | | ",
@@ -40,7 +42,8 @@ char* BIG_E[BIG_LETTERS_LENGTH] = {
     "  '----------------'  "
 };
 
-char* BIG_L[BIG_LETTERS_LENGTH] = {
+char        *BIG_L[BIG_LETTERS_LENGTH] =
+{
     "  .----------------.  ",
     " | .--------------. | ",
     " | |   _____      | | ",
@@ -54,7 +57,8 @@ char* BIG_L[BIG_LETTERS_LENGTH] = {
     "  '----------------'  "
 };
 
-char* BIG_N[BIG_LETTERS_LENGTH] = {
+char        *BIG_N[BIG_LETTERS_LENGTH] =
+{
     "  .-----------------. ",
     " | .--------------. | ",
     " | | ____  _____  | | ",
@@ -68,7 +72,8 @@ char* BIG_N[BIG_LETTERS_LENGTH] = {
     "  '----------------'  "
 };
 
-char* BIG_O[BIG_LETTERS_LENGTH] = {
+char        *BIG_O[BIG_LETTERS_LENGTH] =
+{
     "  .----------------.  ",
     " | .--------------. | ",
     " | |     ____     | | ",
@@ -82,7 +87,8 @@ char* BIG_O[BIG_LETTERS_LENGTH] = {
     "  '----------------'  "
 };
 
-char* BIG_S[BIG_LETTERS_LENGTH] = {
+char        *BIG_S[BIG_LETTERS_LENGTH] =
+{
     " .----------------.  ",
     "| .--------------. | ",
     "| |    _______   | | ",
@@ -96,17 +102,20 @@ char* BIG_S[BIG_LETTERS_LENGTH] = {
     " '----------------'  "
 };
 
+
+char        *BIG_EMPTY[BIG_LETTERS_LENGTH] =
+{
+    "  .----------------.  ",
+    " | .--------------. | ",
+    " | |              | | ",
+    " | |              | | ",
+    " | |              | | ",
+    " | |              | | ",
+    " | |              | | ",
+    " | |              | | ",
+    " | |              | | ",
+    " | '--------------' | ",
+    "  '----------------'  "
+};
+
 #endif          // __BIG_LETTERS_H__
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
