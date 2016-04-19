@@ -12,12 +12,11 @@
 
 void dump_player(Player_t player)
 {
-    printf("Name: %s\n", player.name);
-    printf("\t> Credits: %u\n", player.credits);
-    printf("\t> Gain: %u\n", player.gain);
-#ifdef PRINT_BET
-    printf("\t> Bet: %u\n", player.bet);
-#endif
+    printf("╔═════════╦═════╦═══════╗\n");
+    printf("║ CREDITS ║ BET ║ GAIN  ║\n");
+    printf("╠═════════╬═════╬═══════╣\n");
+    printf("║ %7u ║ %3u ║ %5u ║\n", player.credits, player.bet, player.gain);
+    printf("╚═════════╩═════╩═══════╝\n");
 }
 
 

@@ -27,7 +27,7 @@ LIB_STATIC = $(DIR_LIB)/lib$(EXEC:.out=.a)
 $(shell mkdir -p $(DIR_SRC))
 
 
-CFLAGS  += -W -Wall -Wextra -Wno-unused-function -fmessage-length=0 -D_REENTRANT -I $(DIR_INC)
+CFLAGS  += -W -Wall -Wextra -Wno-unused-function -fmessage-length=0 -D_REENTRANT -DEASTER_EGG -I $(DIR_INC)
 LDFLAGS += -lpthread
 
 

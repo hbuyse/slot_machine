@@ -10,6 +10,12 @@
 #ifndef __GAME_H__
 #define __GAME_H__
 
+#define LETTERS_PER_ROUND 3
+
+
+void clear_screen(void);
+
+
 
 /**
  * @brief      Ask the user if he wants to continue the game
