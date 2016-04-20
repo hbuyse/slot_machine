@@ -10,6 +10,7 @@
 #include <stdio.h>          // fprintf, scanf
 #include <stdlib.h>          // srand, NULL
 #include <time.h>          // time
+#include <unistd.h>          // sleep
 
 #include "player.h"          // Player_t, dump_player
 #include "game.h"           // get_bet, ask_continue
@@ -70,7 +71,11 @@ int main(void)
 
 
         // Place the bet
+#ifndef __DEBUG__
         player.bet      = get_bet(player.credits);
+#else
+        player.bet      = 1;
+#endif
         player.credits  -= player.bet;
         clear_screen();
         player.gain     = run_game() * player.bet;
@@ -81,7 +86,12 @@ int main(void)
 
 
         // Ask if we continue
+#ifndef __DEBUG__
         continuing      = ask_continue();
+#else
+        continuing      = 'y';
+        usleep(150000);
+#endif
 
 
         // Add the profit to the player's credits
