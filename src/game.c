@@ -69,7 +69,7 @@ const Gain_t     gains[] =
 
 
 /**
- * \brief      Purge the standard input
+ * @brief      Purge the standard input
  */
 static void purge(void)
 {
@@ -217,6 +217,7 @@ short run_game(void)
 
     fprintf(stdout, "\n");
 
+
     // Gain part
     // sizeof(gains) / sizeof(Gain_t) is the number of boxes from the gain array
     for ( i = 0; i < (sizeof(gains) / sizeof(Gain_t) ); ++i )
@@ -225,7 +226,6 @@ short run_game(void)
              (belnos_res[2] == gains[i].third) )
         {
 #ifdef EASTER_EGG
-
             switch ( i )
             {
                 case 6:

@@ -13,6 +13,9 @@
 #define LETTERS_PER_ROUND 3
 
 
+/**
+ * @brief      Clear the terminal screen
+ */
 void clear_screen(void);
 
 
@@ -45,6 +48,11 @@ unsigned char get_bet(unsigned short credits);
 unsigned int get_random_mod(unsigned int modulo);
 
 
+/**
+ * @brief      Play a round
+ *
+ * @return     The gain won by the player
+ */
 short run_game(void);
 
 
