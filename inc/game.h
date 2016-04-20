@@ -45,7 +45,7 @@ unsigned char get_bet(unsigned short credits);
 unsigned int get_random_mod(unsigned int modulo);
 
 
-unsigned short run_game(void);
+short run_game(void);
 
 
 #endif          // __GAME_H__

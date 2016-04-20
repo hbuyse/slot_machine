@@ -7,7 +7,7 @@
  * @brief Source file containing the functions about the game
  */
 
-#include <stdio.h>          // printf, scanf, EOF
+#include <stdio.h>          // fprintf, scanf, EOF
 #include <stdlib.h>          // srand, rand, NULL
 
 #include "game.h"          // LETTERS_PER_ROUND
@@ -86,11 +86,11 @@ static void purge(void)
 void clear_screen(void)
 {
     // Animation - clear the previous display
-    printf("%c[2J", 0x1B);
+    fprintf(stdout, "%c[2J", 0x1B);
 
 
     // Animation - Move the cursor top-left
-    printf("%c[%d;%dH", 0x1B, 1, 1);
+    fprintf(stdout, "%c[%d;%dH", 0x1B, 1, 1);
 }
 
 
@@ -103,7 +103,7 @@ unsigned char ask_continue(void)
     do
     {
         // Get the entry
-        printf("Do you want to continue ? : ");
+        fprintf(stdout, "Do you want to continue ? : ");
         continuing = fgetc(stdin);
 
 
@@ -126,7 +126,7 @@ unsigned char get_bet(unsigned short credits)
     do
     {
         // Get the entry
-        printf("Enter your bet ([1:3]): ");
+        fprintf(stdout, "Enter your bet ([1:3]): ");
         bet = fgetc(stdin);
 
 
@@ -141,12 +141,12 @@ unsigned char get_bet(unsigned short credits)
         }
         else if ( bet > credits )
         {
-            printf("You can not bet more than you currently have (bet = %u, credits = %u).\n", bet, credits);
+            fprintf(stderr, "You can not bet more than you currently have (bet = %u, credits = %u).\n", bet, credits);
             bet_nok = 1;          // Bet Not OK
         }
         else
         {
-            printf("You bet %u credits.\n", bet);
+            fprintf(stdout, "You bet %u credits.\n", bet);
             bet_nok = 0;          // Bet Ok
         }
     }
@@ -164,7 +164,7 @@ unsigned int get_random_mod(unsigned int modulo)
 
 
 
-unsigned short run_game(void)
+short run_game(void)
 {
     unsigned char       belnos_res[LETTERS_PER_ROUND]; // Store the three res in the BELNOS format
     unsigned char       i   = 0;     // For loops
@@ -183,38 +183,38 @@ unsigned short run_game(void)
             switch ( belnos_res[j] )
             {
                 case 'B':
-                    printf("%s   ", BIG_B[i]);
+                    fprintf(stdout, "%s   ", BIG_B[i]);
                     break;
 
                 case 'E':
-                    printf("%s   ", BIG_E[i]);
+                    fprintf(stdout, "%s   ", BIG_E[i]);
                     break;
 
                 case 'L':
-                    printf("%s   ", BIG_L[i]);
+                    fprintf(stdout, "%s   ", BIG_L[i]);
                     break;
 
                 case 'N':
-                    printf("%s   ", BIG_N[i]);
+                    fprintf(stdout, "%s   ", BIG_N[i]);
                     break;
 
                 case 'O':
-                    printf("%s   ", BIG_O[i]);
+                    fprintf(stdout, "%s   ", BIG_O[i]);
                     break;
 
                 case 'S':
-                    printf("%s   ", BIG_S[i]);
+                    fprintf(stdout, "%s   ", BIG_S[i]);
                     break;
 
                 default:
-                    printf("%s   ", BIG_EMPTY[i]);
+                    fprintf(stdout, "%s   ", BIG_EMPTY[i]);
             }
         }
 
-        printf("\n");
+        fprintf(stdout, "\n");
     }
 
-    printf("\n");
+    fprintf(stdout, "\n");
 
     // Gain part
     // sizeof(gains) / sizeof(Gain_t) is the number of boxes from the gain array
@@ -224,57 +224,73 @@ unsigned short run_game(void)
              (belnos_res[2] == gains[i].third) )
         {
 #ifdef EASTER_EGG
+
             switch ( i )
             {
+                case 6:
+                    fprintf(stdout,
+                            " __          __  _                            _          _   _            __  __       _        _       \n");
+                    fprintf(stdout,
+                            " \\ \\        / / | |                          | |        | | | |          |  \\/  |     | |      (_)      \n");
+                    fprintf(stdout,
+                            "  \\ \\  /\\  / /__| | ___ ___  _ __ ___   ___  | |_ ___   | |_| |__   ___  | \\  / | __ _| |_ _ __ ___  __ \n");
+                    fprintf(stdout,
+                            "   \\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\  | __| '_ \\ / _ \\ | |\\/| |/ _` | __| '__| \\ \\/ / \n");
+                    fprintf(stdout,
+                            "    \\  /\\  /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |_| | | |  __/ | |  | | (_| | |_| |  | |>  <  \n");
+                    fprintf(stdout,
+                            "     \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|  \\__\\___/   \\__|_| |_|\\___| |_|  |_|\\__,_|\\__|_|  |_/_/\\_\\ \n");
+                    fprintf(stdout, "\n\n");
+                    break;
+
                 case 7:
-                    printf(
-                        " __          __  _                            _          _   _            __  __       _        _       \n");
-                    printf(
-                        " \\ \\        / / | |                          | |        | | | |          |  \\/  |     | |      (_)      \n");
-                    printf(
-                        "  \\ \\  /\\  / /__| | ___ ___  _ __ ___   ___  | |_ ___   | |_| |__   ___  | \\  / | __ _| |_ _ __ ___  __ \n");
-                    printf(
-                        "   \\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\  | __| '_ \\ / _ \\ | |\\/| |/ _` | __| '__| \\ \\/ / \n");
-                    printf(
-                        "    \\  /\\  /  __/ | (_| (_) | | | | | |  __/ | || (_) | | |_| | | |  __/ | |  | | (_| | |_| |  | |>  <  \n");
-                    printf(
-                        "     \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|  \\__\\___/   \\__|_| |_|\\___| |_|  |_|\\__,_|\\__|_|  |_/_/\\_\\ \n");
-                    printf("\n\n");
+                    fprintf(stdout, "  _   _ _       _                 _       _ _ \n");
+                    fprintf(stdout, " | \\ | (_)     | |               | |     | | |\n");
+                    fprintf(stdout, " |  \\| |_ _ __ | |_ ___ _ __   __| | ___ | | |\n");
+                    fprintf(stdout, " | . ` | | '_ \\| __/ _ \\ '_ \\ / _` |/ _ \\| | |\n");
+                    fprintf(stdout, " | |\\  | | | | | ||  __/ | | | (_| | (_) |_|_|\n");
+                    fprintf(stdout, " |_| \\_|_|_| |_|\\__\\___|_| |_|\\__,_|\\___/(_|_)\n");
+                    fprintf(stdout, "\n\n");
                     break;
 
                 case 12:
-                    printf("  _______         _               _          _                _                    ___   \n");
-                    printf(
-                        " |__   __|       (_)             | |        | |              | |                  |__ \\  \n");
-                    printf("    | |_ __ _   _ _ _ __   __ _  | |_ ___   | |__   __ _  ___| | __  _ __ ___   ___  ) | \n");
-                    printf(
-                        "    | | '__| | | | | '_ \\ / _` | | __/ _ \\  | '_ \\ / _` |/ __| |/ / | '_ ` _ \\ / _ \\/ /  \n");
-                    printf("    | | |  | |_| | | | | | (_| | | || (_) | | | | | (_| | (__|   <  | | | | | |  __/_|   \n");
-                    printf(
-                        "    |_|_|   \\__, |_|_| |_|\\__, |  \\__\\___/  |_| |_|\\__,_|\\___|_|\\_\\ |_| |_| |_|\\___(_)   \n");
-                    printf("             __/ |         __/ |                                                         \n");
-                    printf("            |___/         |___/                                                          \n");
-                    printf("\n\n");
+                    fprintf(stdout,
+                            "  _______         _               _          _                _                    ___   \n");
+                    fprintf(stdout,
+                            " |__   __|       (_)             | |        | |              | |                  |__ \\  \n");
+                    fprintf(stdout,
+                            "    | |_ __ _   _ _ _ __   __ _  | |_ ___   | |__   __ _  ___| | __  _ __ ___   ___  ) | \n");
+                    fprintf(stdout,
+                            "    | | '__| | | | | '_ \\ / _` | | __/ _ \\  | '_ \\ / _` |/ __| |/ / | '_ ` _ \\ / _ \\/ /  \n");
+                    fprintf(stdout,
+                            "    | | |  | |_| | | | | | (_| | | || (_) | | | | | (_| | (__|   <  | | | | | |  __/_|   \n");
+                    fprintf(stdout,
+                            "    |_|_|   \\__, |_|_| |_|\\__, |  \\__\\___/  |_| |_|\\__,_|\\___|_|\\_\\ |_| |_| |_|\\___(_)   \n");
+                    fprintf(stdout,
+                            "             __/ |         __/ |                                                         \n");
+                    fprintf(stdout,
+                            "            |___/         |___/                                                          \n");
+                    fprintf(stdout, "\n\n");
                     break;
 
                 case 16:
-                    printf("  _   _         _   _         _   _         _   _       \n");
-                    printf(" | \\ | |       | \\ | |       | \\ | |       | \\ | |      \n");
-                    printf(" |  \\| | __ _  |  \\| | __ _  |  \\| | __ _  |  \\| | __ _ \n");
-                    printf(" | . ` |/ _` | | . ` |/ _` | | . ` |/ _` | | . ` |/ _` |\n");
-                    printf(" | |\\  | (_| | | |\\  | (_| | | |\\  | (_| | | |\\  | (_| |\n");
-                    printf(" |_| \\_|\\__,_| |_| \\_|\\__,_| |_| \\_|\\__,_| |_| \\_|\\__,_|\n");
-                    printf(" | \\ | |       | \\ | |       | \\ | |       | \\ | |      \n");
-                    printf(" |  \\| | __ _  |  \\| | __ _  |  \\| | __ _  |  \\| | __ _ \n");
-                    printf(" | . ` |/ _` | | . ` |/ _` | | . ` |/ _` | | . ` |/ _` |\n");
-                    printf(" | |\\  | (_| | | |\\  | (_| | | |\\  | (_| | | |\\  | (_| |\n");
-                    printf(" |_|_\\_|\\__,_|_|_| \\_|\\__,_| |_| \\_|\\__,_|_|_| \\_|\\__,_|\n");
-                    printf(" |  _ \\      | |                       | | |            \n");
-                    printf(" | |_) | __ _| |_ _ __ ___   __ _ _ __ | | |            \n");
-                    printf(" |  _ < / _` | __| '_ ` _ \\ / _` | '_ \\| | |            \n");
-                    printf(" | |_) | (_| | |_| | | | | | (_| | | | |_|_|            \n");
-                    printf(" |____/ \\__,_|\\__|_| |_| |_|\\__,_|_| |_(_|_)            \n");
-                    printf("\n\n");
+                    fprintf(stdout, "  _   _         _   _         _   _         _   _       \n");
+                    fprintf(stdout, " | \\ | |       | \\ | |       | \\ | |       | \\ | |      \n");
+                    fprintf(stdout, " |  \\| | __ _  |  \\| | __ _  |  \\| | __ _  |  \\| | __ _ \n");
+                    fprintf(stdout, " | . ` |/ _` | | . ` |/ _` | | . ` |/ _` | | . ` |/ _` |\n");
+                    fprintf(stdout, " | |\\  | (_| | | |\\  | (_| | | |\\  | (_| | | |\\  | (_| |\n");
+                    fprintf(stdout, " |_| \\_|\\__,_| |_| \\_|\\__,_| |_| \\_|\\__,_| |_| \\_|\\__,_|\n");
+                    fprintf(stdout, " | \\ | |       | \\ | |       | \\ | |       | \\ | |      \n");
+                    fprintf(stdout, " |  \\| | __ _  |  \\| | __ _  |  \\| | __ _  |  \\| | __ _ \n");
+                    fprintf(stdout, " | . ` |/ _` | | . ` |/ _` | | . ` |/ _` | | . ` |/ _` |\n");
+                    fprintf(stdout, " | |\\  | (_| | | |\\  | (_| | | |\\  | (_| | | |\\  | (_| |\n");
+                    fprintf(stdout, " |_|_\\_|\\__,_|_|_| \\_|\\__,_| |_| \\_|\\__,_|_|_| \\_|\\__,_|\n");
+                    fprintf(stdout, " |  _ \\      | |                       | | |            \n");
+                    fprintf(stdout, " | |_) | __ _| |_ _ __ ___   __ _ _ __ | | |            \n");
+                    fprintf(stdout, " |  _ < / _` | __| '_ ` _ \\ / _` | '_ \\| | |            \n");
+                    fprintf(stdout, " | |_) | (_| | |_| | | | | | (_| | | | |_|_|            \n");
+                    fprintf(stdout, " |____/ \\__,_|\\__|_| |_| |_|\\__,_|_| |_(_|_)            \n");
+                    fprintf(stdout, "\n\n");
                     break;
 
                 default:

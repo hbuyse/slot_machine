@@ -7,7 +7,7 @@
  * @brief   Slot machine simulator in C
  */
 
-#include <stdio.h>          // printf, scanf
+#include <stdio.h>          // fprintf, scanf
 #include <stdlib.h>          // srand, NULL
 #include <time.h>          // time
 
@@ -59,13 +59,13 @@ int main(void)
         {
             for ( j = 0; j < LETTERS_PER_ROUND; ++j )
             {
-                printf("%s   ", BIG_EMPTY[i]);
+                fprintf(stdout, "%s   ", BIG_EMPTY[i]);
             }
 
-            printf("\n");
+            fprintf(stdout, "\n");
         }
 
-        printf("\n");
+        fprintf(stdout, "\n");
         dump_player(player);
 
 
@@ -85,9 +85,25 @@ int main(void)
 
 
         // Add the profit to the player's credits
-        player.credits  += player.gain;
+        if ( (player.gain + player.credits) <= 0 )
+        {
+            player.credits = 0;
+        }
+        else
+        {
+            player.credits += player.gain;
+        }
     }
     while ( ( (continuing == 'y') || (continuing == 'Y') ) && (player.credits > 0) );
+
+    if ( ( (continuing == 'y') || (continuing == 'Y') ) && (player.credits == 0) )
+    {
+        fprintf(stderr, "Impossible to continue, you have 0 credits.\n");
+
+#ifdef EASTER_EGG
+        fprintf(stderr, "GET OUT OF MY CASINO!!\n");
+#endif
+    }
 
     return (0);
 }

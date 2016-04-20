@@ -7,16 +7,16 @@
  * @brief Source file containing the functions about players
  */
 
-#include <stdio.h>          // printf
+#include <stdio.h>          // fprintf
 #include "player.h"          // Player_t
 
 void dump_player(Player_t player)
 {
-    printf("╔═════════╦═════╦═══════╗\n");
-    printf("║ CREDITS ║ BET ║ GAIN  ║\n");
-    printf("╠═════════╬═════╬═══════╣\n");
-    printf("║ %7u ║ %3u ║ %5u ║\n", player.credits, player.bet, player.gain);
-    printf("╚═════════╩═════╩═══════╝\n");
+    fprintf(stdout, "╔═════════╦═════╦═══════╗\n");
+    fprintf(stdout, "║ CREDITS ║ BET ║ GAIN  ║\n");
+    fprintf(stdout, "╠═════════╬═════╬═══════╣\n");
+    fprintf(stdout, "║ %7u ║ %3u ║ %5d ║\n", player.credits, player.bet, player.gain);
+    fprintf(stdout, "╚═════════╩═════╩═══════╝\n");
 }
 
 
