@@ -19,7 +19,6 @@
 void clear_screen(void);
 
 
-
 /**
  * @brief      Ask the user if he wants to continue the game
  *
