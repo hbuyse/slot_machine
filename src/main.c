@@ -74,7 +74,10 @@ int main(void)
 #ifndef __DEBUG__
         player.bet      = get_bet(player.credits);
 #else
-        player.bet      = 1;
+        do
+        {
+            player.bet      = get_random_mod(3) + 1;
+        } while (player.bet > player.credits);
 #endif
         player.credits  -= player.bet;
         clear_screen();
