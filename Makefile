@@ -70,7 +70,7 @@ endif
 vpath %.c $(DIR_SRC)
 
 
-all: $(EXEC) lib
+all: $(EXEC)
 
 
 lib: $(LIB_SHARED) $(LIB_STATIC)
