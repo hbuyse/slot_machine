@@ -1,7 +1,7 @@
-language: c
+language: cpp
 
 compiler:
   - clang
   - gcc
   
-script: make
+script: make V=1 CC=${CC}
