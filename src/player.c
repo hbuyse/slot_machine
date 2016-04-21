@@ -15,7 +15,7 @@ void dump_player(Player_t player)
     fprintf(stdout, "╔═════════╦═════╦═══════╗\n");
     fprintf(stdout, "║ CREDITS ║ BET ║ GAIN  ║\n");
     fprintf(stdout, "╠═════════╬═════╬═══════╣\n");
-    fprintf(stdout, "║ %7u ║ %3u ║ %5d ║\n", player.credits, player.bet, player.gain);
+    fprintf(stdout, "║ %7d ║ %3u ║ %5d ║\n", player.credits, player.bet, player.gain);
     fprintf(stdout, "╚═════════╩═════╩═══════╝\n");
 }
 

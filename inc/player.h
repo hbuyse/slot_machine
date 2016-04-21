@@ -17,7 +17,7 @@
  */
 struct Player_s {
     char *name;          ///< Name of the player
-    unsigned int credits;                ///< Player's credits
+    int credits;                ///< Player's credits
     short gain;                   ///< Player's gain
     unsigned char bet;                    ///< Player's bet on the current round
 };
