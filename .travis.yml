@@ -1,7 +1,17 @@
-language: cpp
+language: c
 
 compiler:
   - clang
   - gcc
-  
+
+os:
+  - linux
+  - osx
+
+before_script:
+- echo $LANG
+- echo $LC_ALL
+- if [ $TRAVIS_OS_NAME == linux ]; then echo "Linux"; fi
+- if [ $TRAVIS_OS_NAME == osx ]; then echo "MacOSX"; fi
+
 script: make V=1 CC=${CC}
