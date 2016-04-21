@@ -263,7 +263,6 @@ const Gain_t     gains[] =
     {.first = 'S', .second = 'S', .third = 'N', .gain = 0},
     {.first = 'S', .second = 'S', .third = 'O', .gain = 0},
     {.first = 'S', .second = 'S', .third = 'S', .gain = 200},
-
 };
 
 

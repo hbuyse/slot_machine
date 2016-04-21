@@ -76,8 +76,9 @@ int main(void)
 #else
         do
         {
-            player.bet      = get_random_mod(3) + 1;
-        } while (player.bet > player.credits);
+            player.bet = get_random_mod(3) + 1;
+        }
+        while ( player.bet > player.credits );
 #endif
         player.credits  -= player.bet;
         clear_screen();
