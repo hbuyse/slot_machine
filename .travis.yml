@@ -9,7 +9,8 @@ os:
   - osx
 
 before_script:
-- echo $LANG
-- echo $LC_ALL
+- echo ${LANG}
+- echo ${LC_ALL}
+- echo ${LD}
 
-script: make V=1 CC=${CC}
+script: make V=1 CC=${CC} LD=${LD}
