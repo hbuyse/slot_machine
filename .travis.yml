@@ -13,4 +13,4 @@ before_script:
 - echo ${LC_ALL}
 - echo ${LD}
 
-script: make V=1 CC=${CC} LD=${LD}
+script: make V=1 CC=${CC} LD=${CC}
