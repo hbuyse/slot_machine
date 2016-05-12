@@ -24,7 +24,7 @@ LIB_SHARED = $(DIR_LIB)/lib$(EXEC:.out=.so)
 LIB_STATIC = $(DIR_LIB)/lib$(EXEC:.out=.a)
 
 
-$(shell mkdir -p $(DIR_SRC))
+$(shell mkdir -p $(DIR_SRC) $(DIR_OBJ) $(DIR_DEP))
 
 
 CFLAGS  += -W -Wall -Wextra -Wno-unused-function -fmessage-length=0 -D_REENTRANT -DEASTER_EGG -I $(DIR_INC)
@@ -34,7 +34,7 @@ LDFLAGS += -lpthread
 SRC      = $(shell find $(DIR_SRC) -name '*.c' | sort)
 OBJ      = $(foreach var,$(notdir $(SRC:.c=.o)),$(DIR_OBJ)/$(var))
 OBJ_LIB  = $(filter-out $(DIR_OBJ)/main.o, $(OBJ))
-DEP      = $(shell find . -name '*.d')
+DEP      = $(shell find $(DIR_DEP) -name '*.d')
 
 
 # Which optimisation?
@@ -70,7 +70,7 @@ endif
 vpath %.c $(DIR_SRC)
 
 
-all: $(EXEC)
+all: $(EXEC) lib
 
 
 lib: $(LIB_SHARED) $(LIB_STATIC)
@@ -93,8 +93,8 @@ $(LIB_STATIC): $(OBJ_LIB)
 	$(VERBOSE) ar crs $@ $^
 
 
-test:
-	$(VERBOSE) $(MAKE) -C $(DIR_TESTS)
+test: $(LIB_STATIC)
+	$(VERBOSE) $(MAKE) -C $(DIR_TESTS) CC=$(CC) LD=$(LD)
 
 
 # Include of the dependencies generated in %.o
@@ -124,6 +124,7 @@ endif
 
 # clean : clean all objects files
 clean:
+	$(VERBOSE) $(MAKE) -C $(DIR_TESTS) clean
 	$(VERBOSE) [ ! -d "$(DIR_OBJ)" ] || find $(DIR_OBJ) -type f -name '*.o' -delete
 	$(VERBOSE) [ ! -d "$(DIR_PREPRO)" ] || find $(DIR_PREPRO) -type f -name '*.i' -delete
 	$(VERBOSE) [ ! -d "$(DIR_LST)" ] || find $(DIR_LST) -type f -name '*.lst' -delete
@@ -132,6 +133,7 @@ clean:
 # distclean : clean all objects files and the executable
 d: distclean
 distclean: clean
+	$(VERBOSE) $(MAKE) -C $(DIR_TESTS) distclean
 	$(VERBOSE) [ ! -d "$(DIR_DEP)" ] || find $(DIR_DEP) -type f -name '*.d' -delete
 	$(VERBOSE) [ ! -d "$(DIR_LIB)" ] || find $(DIR_LIB) -type f -name '*.so' -delete
 	$(VERBOSE) [ ! -d "$(DIR_LIB)" ] || find $(DIR_LIB) -type f -name '*.a' -delete
