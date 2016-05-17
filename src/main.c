@@ -54,7 +54,7 @@ int main(void)
 {
     unsigned char       i           = 0; // For loops
     unsigned char       j           = 0; // For loops
-    char                continuing  = 'y';
+    unsigned char       continuing  = 1;
 
 
     // Create the player
@@ -116,7 +116,7 @@ int main(void)
 #ifndef __DEBUG__
         continuing      = ask_continue();
 #else
-        continuing      = 'y';
+        continuing      = 1;
         usleep(150000);
 #endif
 
@@ -131,9 +131,9 @@ int main(void)
             player.credits += player.gain;
         }
     }
-    while ( ( (continuing == 'y') || (continuing == 'Y') ) && (player.credits > 0) );
+    while ( continuing && (player.credits > 0) );
 
-    if ( ( (continuing == 'y') || (continuing == 'Y') ) && (player.credits == 0) )
+    if ( continuing && (player.credits == 0) )
     {
         fprintf(stderr, "Impossible to continue, you have 0 credits.\n");
 

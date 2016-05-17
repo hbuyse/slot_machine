@@ -302,16 +302,17 @@ unsigned char ask_continue(void)
     do
     {
         // Get the entry
-        fprintf(stdout, "Do you want to continue ? : ");
+        fprintf(stdout, "Do you want to continue ? [Y/n] ");
         continuing = fgetc(stdin);
 
 
         // Purge the standard input
         purge();
     }
-    while ( (continuing != 'y') && (continuing != 'Y') && (continuing != 'n') && (continuing != 'N') );
+    while ( (continuing != 'y') && (continuing != 'Y') && (continuing != 'n') && (continuing != 'N') &&
+            (continuing != '\n') );
 
-    return (continuing);
+    return ( ( (continuing == 'y') || (continuing == 'y' || continuing == '\n') ) ? 1 : 0);
 }
 
 
