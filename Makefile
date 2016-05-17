@@ -28,7 +28,7 @@ $(shell mkdir -p $(DIR_SRC) $(DIR_OBJ) $(DIR_DEP))
 
 
 CFLAGS  += -W -Wall -Wextra -Wno-unused-function -fmessage-length=0 -D_REENTRANT -DEASTER_EGG -I $(DIR_INC)
-LDFLAGS += -lpthread
+LDFLAGS += -lrt
 
 
 SRC      = $(shell find $(DIR_SRC) -name '*.c' | sort)
