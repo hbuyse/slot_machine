@@ -1,0 +1,74 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2016 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.2.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-17 11:24+0200\n"
+"PO-Revision-Date: 2016-05-17 11:24+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/player.c:22
+#, c-format
+msgid "                       ║ %7d ║ %3u ║ %5d ║\n"
+msgstr "                       ║ %7d ║  %3u ║ %5d ║\n"
+
+#: src/player.c:20
+#, c-format
+msgid "                       ║ CREDITS ║ BET ║ GAIN  ║\n"
+msgstr "                       ║ CREDITS ║ PARI ║ GAIN  ║\n"
+
+#: src/player.c:19
+#, c-format
+msgid "                       ╔═════════╦═════╦═══════╗\n"
+msgstr "                       ╔═════════╦══════╦═══════╗\n"
+
+#: src/player.c:23
+#, c-format
+msgid "                       ╚═════════╩═════╩═══════╝\n"
+msgstr "                       ╚═════════╩══════╩═══════╝\n"
+
+#: src/player.c:21
+#, c-format
+msgid "                       ╠═════════╬═════╬═══════╣\n"
+msgstr "                       ╠═════════╬══════╬═══════╣\n"
+
+#: src/game.c:308
+#, c-format
+msgid "Do you want to continue ? [Y/n] "
+msgstr "Voulez-vous continuer ? [Y/n] "
+
+#: src/game.c:332
+#, c-format
+msgid "Enter your bet ([1:3]): "
+msgstr "Entrez votre pari ([1:3]): "
+
+#: src/main.c:175
+#, c-format
+msgid "GET OUT OF MY CASINO!!\n"
+msgstr "SORS DE MON CASINO!!\n"
+
+#: src/main.c:172
+#, c-format
+msgid "Impossible to continue, you have 0 credits.\n"
+msgstr "Impossible de continuer, vous n'avez plus de crédits.\n"
+
+#: src/game.c:352
+#, c-format
+msgid "You bet %u credits.\n"
+msgstr "Vous avez parié %u crédits.\n"
+
+#: src/game.c:347
+#, c-format
+msgid ""
+"You can not bet more than you currently have (bet = %u, credits = %u).\n"
+msgstr "Vous ne pouvez miser plus que ce que vous avez actuellement (pari : %u, credits = %u).\n"
