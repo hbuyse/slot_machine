@@ -40,7 +40,6 @@ DEP      = $(shell find $(DIR_DEP) -name '*.d')
 
 # Which optimisation?
 OPTIM   ?= DEBUG
-$(warning $(OPTIM))
 ifeq ($(OPTIM),SIZE)
 	override CFLAGS   += -Os
 else ifeq ($(OPTIM),SPEED)
