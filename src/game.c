@@ -9,14 +9,18 @@
 
 #include <stdio.h>          // fprintf, scanf, EOF
 #include <stdlib.h>          // srand, rand, NULL
-#include <libintl.h>          // gettext, bindtextdomain, textdomain
 
 #include "game.h"          // LETTERS_PER_ROUND
 #include "big_letters.h"          // BIG_B, BIG_E, BIG_L, BIG_N, BIG_O, BIG_S
 
 #define ZERO_ASCII 48
 
+#ifndef __OSX__
+#include <libintl.h>          // gettext, bindtextdomain, textdomain
 #define _(STRING) gettext(STRING)
+#else
+#define _(STRING) STRING
+#endif
 
 
 /**

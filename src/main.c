@@ -11,8 +11,6 @@
 #include <stdlib.h>          // srand, NULL
 #include <time.h>          // time
 #include <unistd.h>          // sleep
-#include <libintl.h>          // gettext, bindtextdomain, textdomain
-#include <locale.h>          // setlocale
 
 #include "player.h"          // Player_t, dump_player
 #include "game.h"           // get_bet, ask_continue
@@ -24,8 +22,13 @@
 #define STARTING_BET 1          ///< Bet at the beginnig of the game
 
 
-// For lazy developers ;-)
+#ifndef __OSX__
+#include <libintl.h>          // gettext, bindtextdomain, textdomain
+#include <locale.h>          // setlocale
 #define _(STRING) gettext(STRING)
+#else
+#define _(STRING) STRING
+#endif
 
 
 /**
@@ -72,7 +75,7 @@ int main(void)
         .bet        = STARTING_BET
     };
 
-
+    #ifndef __OSX__
     /* LC_ALL is a catch-all Locale Category (LC); setting it will alter all LC categories. There are other, specific,
      * categories for translations; for example LC_MESSAGES is the LC (LC) for message translation; LC_CTYPE is the
      * category that indicates the character set supported.
@@ -99,7 +102,7 @@ int main(void)
      * elsewhere) at runtime, you can switch between different domains as desired.
      */
     textdomain("locale");
-
+    #endif
 
     // Initialize the random process
     srand(time(NULL) );
