@@ -2,6 +2,7 @@ SLOT MACHINE SIMULATOR
 ======================
 
 [![Build Status](https://travis-ci.org/hbuyse/slot_machine.svg?branch=master)](https://travis-ci.org/hbuyse/slot_machine)
+[![Documentation](https://codedocs.xyz/hbuyse/slot_machine.svg)](https://codedocs.xyz/hbuyse/slot_machine/)
 
 Project's objectives
 --------------------
