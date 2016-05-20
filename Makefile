@@ -27,9 +27,9 @@ LIB_STATIC = $(DIR_LIB)/lib$(EXEC:.out=.a)
 $(shell mkdir -p $(DIR_SRC) $(DIR_OBJ) $(DIR_DEP))
 
 
-CFLAGS  += -W -Wall -Wextra -Wno-unused-function -fmessage-length=0 -D_REENTRANT -I $(DIR_INC)
-# CFLAGS  += -DEASTER_EGG
-LDFLAGS += -lrt
+override CFLAGS  += -W -Wall -Wextra -Wno-unused-function -fmessage-length=0 -D_REENTRANT -I $(DIR_INC)
+# override CFLAGS  += -DEASTER_EGG
+override LDFLAGS += -lrt
 
 
 SRC      = $(shell find $(DIR_SRC) -name '*.c' | sort)
@@ -41,13 +41,13 @@ DEP      = $(shell find $(DIR_DEP) -name '*.d')
 # Which optimisation?
 OPTIM   ?= DEBUG
 ifeq ($(OPTIM),SIZE)
-	CFLAGS   += -Os
+	override CFLAGS   += -Os
 else ifeq ($(OPTIM),SPEED)
-	CFLAGS   += -Ofast
+	override CFLAGS   += -Ofast
 else ifeq ($(OPTIM),DEBUG)
-	CFLAGS   += -g3 -O1 -D__DEBUG__
+	override CFLAGS   += -g3 -O1 -D__DEBUG__
 else ifeq ($(OPTIM),NONE)
-	CFLAGS   +=
+	override CFLAGS   +=
 endif
 
 

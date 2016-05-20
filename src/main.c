@@ -22,6 +22,15 @@
 #define STARTING_BET 1          ///< Bet at the beginnig of the game
 
 
+#ifndef __OSX__
+    #include <libintl.h>      // gettext, bindtextdomain, textdomain
+    #include <locale.h>      // setlocale
+#define _(STRING) gettext(STRING)
+#else
+#define _(STRING) STRING
+#endif
+
+
 /**
  * @mainpage Slot Machine Simulator - Documentation
  *
@@ -65,6 +74,38 @@ int main(void)
         .gain       = STARTING_GAIN,
         .bet        = STARTING_BET
     };
+
+
+#ifndef __OSX__
+
+
+    /* LC_ALL is a catch-all Locale Category (LC); setting it will alter all LC categories. There are other, specific,
+     * categories for translations; for example LC_MESSAGES is the LC (LC) for message translation; LC_CTYPE is the
+     * category that indicates the character set supported.
+     *
+     * By setting the locale to "", you are implicitly assigning the locale to the user's defined locale (grabbed from
+     * the user's LC or LANG environment variables). If there is no user-defined locale, the default locale "C" is used.
+     */
+    setlocale(LC_ALL, "");
+
+
+    /* This command binds the name "foo" to the directory root of the message files. This is used to specify where you
+     * want your locale files stored; using the standard /usr/local/share/locale or /usr/share/locale is a good idea.
+     * "foo" should correspond to the application name; you will use it when setting the gettext domain through
+     * textdomain(), and it corresponds to the name of the file to be looked up in the appropriate locale directory.
+     *
+     * The bindtextdomain() call is not mandatory; if you choose to install your file in the system's default locale
+     * directory it can be omitted. Since the default can change from system to system, however, it is recommended.
+     */
+    bindtextdomain("locale", "./po");
+
+
+    /* This sets the application name as "foo", as cited above. This makes gettext calls look for the file foo.po in
+     * the appropriate directory. By binding various domains and setting the textdomain (or using dcgettext(), explained
+     * elsewhere) at runtime, you can switch between different domains as desired.
+     */
+    textdomain("locale");
+#endif
 
 
     // Initialize the random process
@@ -135,10 +176,10 @@ int main(void)
 
     if ( continuing && (player.credits == 0) )
     {
-        fprintf(stderr, "Impossible to continue, you have 0 credits.\n");
+        fprintf(stderr, _("Impossible to continue, you have 0 credits.\n") );
 
 #ifdef EASTER_EGG
-        fprintf(stderr, "GET OUT OF MY CASINO!!\n");
+        fprintf(stderr, _("GET OUT OF MY CASINO!!\n") );
 #endif
     }
 

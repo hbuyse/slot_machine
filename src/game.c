@@ -13,7 +13,18 @@
 #include "game.h"          // LETTERS_PER_ROUND
 #include "big_letters.h"          // BIG_B, BIG_E, BIG_L, BIG_N, BIG_O, BIG_S
 
+
+/**
+ * @brief Decimal number for the zero in the ASCII table
+ */
 #define ZERO_ASCII 48
+
+#ifndef __OSX__
+    #include <libintl.h>      // gettext, bindtextdomain, textdomain
+#define _(STRING) gettext(STRING)
+#else
+#define _(STRING) STRING
+#endif
 
 
 /**
@@ -37,6 +48,7 @@ struct Gain_s {
 
 /**
  * @typedef Gain_t
+ * @brief Typedef of Gain_s
  */
 typedef struct Gain_s Gain_t;
 
@@ -302,7 +314,7 @@ unsigned char ask_continue(void)
     do
     {
         // Get the entry
-        fprintf(stdout, "Do you want to continue ? [Y/n] ");
+        fprintf(stdout, _("Do you want to continue ? [Y/n] ") );
         continuing = fgetc(stdin);
 
 
@@ -326,7 +338,7 @@ unsigned char get_bet(unsigned short credits)
     do
     {
         // Get the entry
-        fprintf(stdout, "Enter your bet ([1:3]): ");
+        fprintf(stdout, _("Enter your bet ([1:3]): ") );
         bet = fgetc(stdin);
 
 
@@ -341,12 +353,13 @@ unsigned char get_bet(unsigned short credits)
         }
         else if ( bet > credits )
         {
-            fprintf(stderr, "You can not bet more than you currently have (bet = %u, credits = %u).\n", bet, credits);
+            fprintf(stderr, _("You can not bet more than you currently have (bet = %u, credits = %u).\n"), bet,
+                    credits);
             bet_nok = 1;          // Bet Not OK
         }
         else
         {
-            fprintf(stdout, "You bet %u credits.\n", bet);
+            fprintf(stdout, _("You bet %u credits.\n"), bet);
             bet_nok = 0;          // Bet Ok
         }
     }

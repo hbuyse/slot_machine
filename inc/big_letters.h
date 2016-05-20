@@ -10,6 +10,10 @@
 #ifndef __BIG_LETTERS_H__
 #define __BIG_LETTERS_H__
 
+
+/**
+ * @brief Number of lines that constitutes a big letter
+ */
 #define BIG_LETTERS_LENGTH 11
 
 

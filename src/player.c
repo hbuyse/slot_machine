@@ -8,15 +8,24 @@
  */
 
 #include <stdio.h>          // fprintf
+
 #include "player.h"          // Player_t
+
+#ifndef __OSX__
+    #include <libintl.h>      // gettext, bindtextdomain, textdomain
+#define _(STRING) gettext(STRING)
+#else
+#define _(STRING) STRING
+#endif
+
 
 void dump_player(Player_t player)
 {
-    fprintf(stdout, "                       ╔═════════╦═════╦═══════╗\n");
-    fprintf(stdout, "                       ║ CREDITS ║ BET ║ GAIN  ║\n");
-    fprintf(stdout, "                       ╠═════════╬═════╬═══════╣\n");
-    fprintf(stdout, "                       ║ %7d ║ %3u ║ %5d ║\n", player.credits, player.bet, player.gain);
-    fprintf(stdout, "                       ╚═════════╩═════╩═══════╝\n");
+    fprintf(stdout, _("                       ╔═════════╦═════╦═══════╗\n") );
+    fprintf(stdout, _("                       ║ CREDITS ║ BET ║ GAIN  ║\n") );
+    fprintf(stdout, _("                       ╠═════════╬═════╬═══════╣\n") );
+    fprintf(stdout, _("                       ║ %7d ║ %3u ║ %5d ║\n"), player.credits, player.bet, player.gain);
+    fprintf(stdout, _("                       ╚═════════╩═════╩═══════╝\n") );
 }
 
 

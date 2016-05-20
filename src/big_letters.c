@@ -1,3 +1,12 @@
+/**
+ * @author hbuyse
+ * @date 18/04/2016
+ *
+ * @file big_letters.c
+ *
+ * @brief Source file containing all big letters
+ */
+
 #include "big_letters.h"          // BIG_LETTERS_LENGTH
 
 char        *BIG_B[BIG_LETTERS_LENGTH] =
