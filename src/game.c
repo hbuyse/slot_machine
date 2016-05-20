@@ -13,10 +13,14 @@
 #include "game.h"          // LETTERS_PER_ROUND
 #include "big_letters.h"          // BIG_B, BIG_E, BIG_L, BIG_N, BIG_O, BIG_S
 
+
+/**
+ * @brief Decimal number for the zero in the ASCII table
+ */
 #define ZERO_ASCII 48
 
 #ifndef __OSX__
-#include <libintl.h>          // gettext, bindtextdomain, textdomain
+    #include <libintl.h>      // gettext, bindtextdomain, textdomain
 #define _(STRING) gettext(STRING)
 #else
 #define _(STRING) STRING

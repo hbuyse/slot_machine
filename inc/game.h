@@ -10,6 +10,10 @@
 #ifndef __GAME_H__
 #define __GAME_H__
 
+
+/**
+ * @brief Number of random letter that is pulled for a game
+ */
 #define LETTERS_PER_ROUND 3
 
 

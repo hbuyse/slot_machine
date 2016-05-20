@@ -23,8 +23,8 @@
 
 
 #ifndef __OSX__
-#include <libintl.h>          // gettext, bindtextdomain, textdomain
-#include <locale.h>          // setlocale
+    #include <libintl.h>      // gettext, bindtextdomain, textdomain
+    #include <locale.h>      // setlocale
 #define _(STRING) gettext(STRING)
 #else
 #define _(STRING) STRING
@@ -75,7 +75,10 @@ int main(void)
         .bet        = STARTING_BET
     };
 
-    #ifndef __OSX__
+
+#ifndef __OSX__
+
+
     /* LC_ALL is a catch-all Locale Category (LC); setting it will alter all LC categories. There are other, specific,
      * categories for translations; for example LC_MESSAGES is the LC (LC) for message translation; LC_CTYPE is the
      * category that indicates the character set supported.
@@ -102,7 +105,8 @@ int main(void)
      * elsewhere) at runtime, you can switch between different domains as desired.
      */
     textdomain("locale");
-    #endif
+#endif
+
 
     // Initialize the random process
     srand(time(NULL) );
