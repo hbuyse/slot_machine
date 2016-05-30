@@ -324,7 +324,7 @@ unsigned char ask_continue(void)
     while ( (continuing != 'y') && (continuing != 'Y') && (continuing != 'n') && (continuing != 'N') &&
             (continuing != '\n') );
 
-    return ( ( (continuing == 'y') || (continuing == 'y' || continuing == '\n') ) ? 1 : 0);
+    return ( ( (continuing == 'y') || (continuing == 'Y' || continuing == '\n') ) ? 1 : 0);
 }
 
 
