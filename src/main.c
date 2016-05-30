@@ -64,6 +64,7 @@ int main(void)
     unsigned char       i           = 0; // For loops
     unsigned char       j           = 0; // For loops
     unsigned char       continuing  = 1;
+    unsigned char       figure_or_letter = 0;
 
 
     // Create the player
@@ -111,6 +112,8 @@ int main(void)
     // Initialize the random process
     srand(time(NULL) );
 
+    figure_or_letter = ask_figure_or_letter();
+
 
     // Main loop
     do
@@ -146,7 +149,7 @@ int main(void)
 #endif
         player.credits  -= player.bet;
         clear_screen();
-        player.gain     = run_game() * player.bet;
+        player.gain     = run_game(figure_or_letter) * player.bet;
 
 
         // Print the player's informations

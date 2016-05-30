@@ -24,6 +24,14 @@ void clear_screen(void);
 
 
 /**
+ * \brief      Ask the user if he wants to use figures or letters
+ *
+ * \return     0 : figures / 1 : letters
+ */
+unsigned char ask_figure_or_letter(void);
+
+
+/**
  * @brief      Ask the user if he wants to continue the game
  *
  * @return     Y / y / N / n
@@ -54,9 +62,11 @@ unsigned int get_random_mod(unsigned int modulo);
 /**
  * @brief      Play a round
  *
+ * @param[in]  figure_or_letter Print figures or letters
+ *
  * @return     The gain won by the player
  */
-short run_game(void);
+short run_game(unsigned char figure_or_letter);
 
 
 #endif          // __GAME_H__
