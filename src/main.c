@@ -23,8 +23,8 @@
 
 
 #ifndef __OSX__
-    #include <libintl.h>      // gettext, bindtextdomain, textdomain
-    #include <locale.h>      // setlocale
+    #include <libintl.h>          // gettext, bindtextdomain, textdomain
+    #include <locale.h>          // setlocale
 #define _(STRING) gettext(STRING)
 #else
 #define _(STRING) STRING

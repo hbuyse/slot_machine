@@ -6,10 +6,11 @@
 
 MU_TEST(test_get_random_mod)
 {
-    unsigned char i = 0;
-    unsigned char res = 10;
+    unsigned char       i   = 0;
+    unsigned char       res = 10;
 
-    for (i = 0; i < 100; ++i)
+
+    for ( i = 0; i < 100; ++i )
     {
         res = get_random_mod(6);
         mu_check(res < 6);
@@ -27,5 +28,5 @@ int main(void)
     MU_RUN_SUITE(slot_machine);
     MU_REPORT();
 
-    return ((minunit_fail == 0) ? 0 : 1);
+    return ( (minunit_fail == 0) ? 0 : 1);
 }

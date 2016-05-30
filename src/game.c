@@ -20,7 +20,7 @@
 #define ZERO_ASCII 48
 
 #ifndef __OSX__
-    #include <libintl.h>      // gettext, bindtextdomain, textdomain
+    #include <libintl.h>          // gettext, bindtextdomain, textdomain
 #define _(STRING) gettext(STRING)
 #else
 #define _(STRING) STRING
