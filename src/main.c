@@ -64,7 +64,7 @@ int main(void)
     unsigned char       i           = 0; // For loops
     unsigned char       j           = 0; // For loops
     unsigned char       continuing  = 1;
-    unsigned char       figure_or_letter = 0;
+    unsigned char       figure_or_letter = 1;
 
 
     // Create the player
@@ -112,8 +112,9 @@ int main(void)
     // Initialize the random process
     srand(time(NULL) );
 
+#ifndef __DEBUG__
     figure_or_letter = ask_figure_or_letter();
-
+#endif
 
     // Main loop
     do
