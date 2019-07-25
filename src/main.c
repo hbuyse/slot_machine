@@ -105,7 +105,7 @@ int main(void)
   do
   {
     // Print the informations
-    // clear_screen();
+    clear_screen();
     player_set_bet(player, 0);
     player_set_gain(player, 0);
 
@@ -125,7 +125,7 @@ int main(void)
     // Place the bet
     unsigned short bet = player_ask_bet(player);
     player_set_bet(player, bet);
-    // clear_screen();
+    clear_screen();
     unsigned short gain = run_game(figure_or_letter) * player_get_bet(player);
     player_set_gain(player, gain);
 
