@@ -10,18 +10,15 @@
 #ifndef __GAME_H__
 #define __GAME_H__
 
-
 /**
  * @brief Number of random letter that is pulled for a game
  */
 #define LETTERS_PER_ROUND 3
 
-
 /**
  * @brief      Clear the terminal screen
  */
 void clear_screen(void);
-
 
 /**
  * \brief      Ask the user if he wants to use figures or letters
@@ -30,14 +27,12 @@ void clear_screen(void);
  */
 unsigned char ask_figure_or_letter(void);
 
-
 /**
  * @brief      Ask the user if he wants to continue the game
  *
  * @return     Y / y / N / n
  */
 unsigned char ask_continue(void);
-
 
 /**
  * @brief      Get a random number using a modulo.
@@ -48,7 +43,6 @@ unsigned char ask_continue(void);
  */
 unsigned int get_random_mod(unsigned int modulo);
 
-
 /**
  * @brief      Play a round
  *
@@ -58,5 +52,4 @@ unsigned int get_random_mod(unsigned int modulo);
  */
 short run_game(unsigned char figure_or_letter);
 
-
-#endif          // __GAME_H__
+#endif   // __GAME_H__

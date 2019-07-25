@@ -68,5 +68,4 @@ int player_set_bet(struct player_s* p, unsigned short bet);
 int player_add_gain_to_credits(struct player_s* p);
 int player_ask_bet(struct player_s* p);
 
-
 #endif   // __PLAYER_H__

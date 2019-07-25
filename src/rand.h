@@ -3,4 +3,4 @@
 
 unsigned int rand_get(unsigned int modulo);
 
-#endif // __RAND_H__
+#endif   // __RAND_H__

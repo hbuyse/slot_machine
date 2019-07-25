@@ -32,17 +32,17 @@ extern "C" {
  * @brief Macro that logs an error trace into the syslog
  */
 #ifndef NDEBUG
-#define TRACE_ERROR(fmt, ...)                                                                            \
-  do                                                                                                     \
-  {                                                                                                      \
-    syslog(LOG_ERR, "[%s:%d][%s] - " fmt, basename(__FILE__), __LINE__, __func__, ##__VA_ARGS__);        \
-    fprintf(stderr, "\e[31m[ERROR][%s:%d][%s] - " fmt "\e[0m\n", basename(__FILE__), __LINE__, __func__, \
-            ##__VA_ARGS__);                                                                              \
-  } while (0)
+#  define TRACE_ERROR(fmt, ...)                                                                            \
+    do                                                                                                     \
+    {                                                                                                      \
+      syslog(LOG_ERR, "[%s:%d][%s] - " fmt, basename(__FILE__), __LINE__, __func__, ##__VA_ARGS__);        \
+      fprintf(stderr, "\e[31m[ERROR][%s:%d][%s] - " fmt "\e[0m\n", basename(__FILE__), __LINE__, __func__, \
+              ##__VA_ARGS__);                                                                              \
+    } while (0)
 #else
-#  define TRACE_ERROR(fmt, ...)                                                                       \
-    do                                                                                               \
-    {                                                                                                \
+#  define TRACE_ERROR(fmt, ...)                                                                     \
+    do                                                                                              \
+    {                                                                                               \
       syslog(LOG_ERR, "[%s:%d][%s] - " fmt, basename(__FILE__), __LINE__, __func__, ##__VA_ARGS__); \
     } while (0)
 #endif
@@ -51,17 +51,17 @@ extern "C" {
  * @brief Macro that logs an warning trace into the syslog
  */
 #ifndef NDEBUG
-#define TRACE_WARNING(fmt, ...)                                                                            \
-  do                                                                                                       \
-  {                                                                                                        \
-    syslog(LOG_WARNING, "[%s:%d][%s] - " fmt, basename(__FILE__), __LINE__, __func__, ##__VA_ARGS__);      \
-    fprintf(stderr, "\e[33m[WARNING][%s:%d][%s] - " fmt "\e[0m\n", basename(__FILE__), __LINE__, __func__, \
-            ##__VA_ARGS__);                                                                                \
-  } while (0)
+#  define TRACE_WARNING(fmt, ...)                                                                            \
+    do                                                                                                       \
+    {                                                                                                        \
+      syslog(LOG_WARNING, "[%s:%d][%s] - " fmt, basename(__FILE__), __LINE__, __func__, ##__VA_ARGS__);      \
+      fprintf(stderr, "\e[33m[WARNING][%s:%d][%s] - " fmt "\e[0m\n", basename(__FILE__), __LINE__, __func__, \
+              ##__VA_ARGS__);                                                                                \
+    } while (0)
 #else
 #  define TRACE_WARNING(fmt, ...)                                                                       \
-    do                                                                                               \
-    {                                                                                                \
+    do                                                                                                  \
+    {                                                                                                   \
       syslog(LOG_WARNING, "[%s:%d][%s] - " fmt, basename(__FILE__), __LINE__, __func__, ##__VA_ARGS__); \
     } while (0)
 #endif

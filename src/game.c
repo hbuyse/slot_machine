@@ -12,7 +12,7 @@
 
 #include "big_letters.h"   // BIG_B, BIG_E, BIG_L, BIG_N, BIG_O, BIG_S
 #include "game.h"          // LETTERS_PER_ROUND
-#include "rand.h"           // rand_get
+#include "rand.h"          // rand_get
 
 #ifndef __OSX__
 #  include <libintl.h>   // gettext, bindtextdomain, textdomain
