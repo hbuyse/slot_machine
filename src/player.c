@@ -94,7 +94,7 @@ void player_dump(struct player_s* p)
   fprintf(stdout, _("                       ╔═════════╦═════╦═══════╗\n"));
   fprintf(stdout, _("                       ║ CREDITS ║ BET ║ GAIN  ║\n"));
   fprintf(stdout, _("                       ╠═════════╬═════╬═══════╣\n"));
-  fprintf(stdout, _("                       ║ %7llu ║ %3u ║ %5u ║\n"), p->credits, p->bet, p->gain);
+  fprintf(stdout, _("                       ║ %7llu ║ %3u ║ %5d ║\n"), p->credits, p->bet, p->gain);
   fprintf(stdout, _("                       ╚═════════╩═════╩═══════╝\n"));
 }
 
