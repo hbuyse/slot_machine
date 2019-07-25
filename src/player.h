@@ -10,33 +10,22 @@
 #ifndef __PLAYER_H__
 #define __PLAYER_H__
 
-
 /**
- * @struct Player_s
- * @brief Struture containing all informations about the player
+ * @typedef struct player_s
+ * @brief Opaque definition of a player
  */
-struct Player_s {
-    char *name;          ///< Name of the player
-    int credits;                ///< Player's credits
-    short gain;                   ///< Player's gain
-    unsigned char bet;                    ///< Player's bet on the current round
-};
+struct player_s;
 
-
-/**
- * @typedef Player_t
- * @brief Type definition of the structure Player_s
- */
-typedef struct Player_s Player_t;
-
+struct player_s* player_create(const char* name, unsigned long long int credits);
+int player_ref(struct player_s** p);
+int player_unref(struct player_s** p);
 
 /**
  * @brief      Display all informations on the player
  *
  * @param[in]  player  The player we want to check the infos
  */
-void dump_player(Player_t player);
-
+void player_dump(struct player_s* player);
 
 /**
  * @brief      Get the player name.
@@ -45,8 +34,7 @@ void dump_player(Player_t player);
  *
  * @return     The player name.
  */
-char* get_player_name(Player_t p);
-
+char* player_get_name(struct player_s* player);
 
 /**
  * @brief      Get the player credits.
@@ -55,8 +43,7 @@ char* get_player_name(Player_t p);
  *
  * @return     The player credits.
  */
-unsigned short get_player_credits(Player_t p);
-
+unsigned long long int player_get_credits(struct player_s* player);
 
 /**
  * @brief      Get the player gain.
@@ -65,8 +52,7 @@ unsigned short get_player_credits(Player_t p);
  *
  * @return     The player gain.
  */
-unsigned short get_player_gain(Player_t p);
-
+unsigned short player_get_gain(struct player_s* player);
 
 /**
  * @brief      Get the player bet.
@@ -75,7 +61,12 @@ unsigned short get_player_gain(Player_t p);
  *
  * @return     The player bet.
  */
-unsigned char get_player_bet(Player_t p);
+unsigned short player_get_bet(struct player_s* player);
+
+int player_set_gain(struct player_s* p, unsigned short gain);
+int player_set_bet(struct player_s* p, unsigned short bet);
+int player_add_gain_to_credits(struct player_s* p);
+int player_ask_bet(struct player_s* p);
 
 
-#endif          // __PLAYER_H__
+#endif   // __PLAYER_H__

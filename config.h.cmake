@@ -1,0 +1,1 @@
+#cmakedefine EASTER_EGG

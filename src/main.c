@@ -12,14 +12,12 @@
 #include <time.h>          // time
 #include <unistd.h>          // sleep
 
-#include "player.h"          // Player_t, dump_player
-#include "game.h"           // get_bet, ask_continue
+#include "player.h"          // Player_t, player_dump
+#include "game.h"           // ask_continue
 #include "big_letters.h"          // BIG_EMPTY
 
 #define PLAYER_NAME "Henri Buyse "          ///< Player's name
 #define STARTING_CREDITS 10          ///< Credits at the beginnig of the game
-#define STARTING_GAIN 0          ///< Gain at the beginning of the game
-#define STARTING_BET 1          ///< Bet at the beginnig of the game
 
 
 #ifndef __OSX__
@@ -67,14 +65,7 @@ int main(void)
     unsigned char       figure_or_letter = 1;
 
 
-    // Create the player
-    Player_t            player      =
-    {
-        .name       = PLAYER_NAME,
-        .credits    = STARTING_CREDITS,
-        .gain       = STARTING_GAIN,
-        .bet        = STARTING_BET
-    };
+    struct player_s* player = NULL;
 
 
 #ifndef __OSX__
@@ -112,7 +103,10 @@ int main(void)
     // Initialize the random process
     srand(time(NULL) );
 
-#ifndef __DEBUG__
+    // Create the player object
+    player = player_create(PLAYER_NAME, STARTING_CREDITS);
+
+#ifdef NDEBUG
     figure_or_letter = ask_figure_or_letter();
 #endif
 
@@ -120,9 +114,9 @@ int main(void)
     do
     {
         // Print the informations
-        clear_screen();
-        player.bet  = 0;
-        player.gain = 0;
+        // clear_screen();
+        player_set_bet(player, 0);
+        player_set_gain(player, 0);
 
         for ( i = 0; i < BIG_LETTERS_LENGTH; ++i )
         {
@@ -135,30 +129,22 @@ int main(void)
         }
 
         fprintf(stdout, "\n");
-        dump_player(player);
+        player_dump(player);
 
 
         // Place the bet
-#ifndef __DEBUG__
-        player.bet      = get_bet(player.credits);
-#else
-        do
-        {
-            player.bet = get_random_mod(3) + 1;
-        }
-        while ( player.bet > player.credits );
-#endif
-        player.credits  -= player.bet;
-        clear_screen();
-        player.gain     = run_game(figure_or_letter) * player.bet;
-
+        unsigned short bet = player_ask_bet(player);
+        player_set_bet(player, bet);
+        // clear_screen();
+        unsigned short gain = run_game(figure_or_letter) * player_get_bet(player);
+        player_set_gain(player, gain);
 
         // Print the player's informations
-        dump_player(player);
+        player_dump(player);
 
 
         // Ask if we continue
-#ifndef __DEBUG__
+#ifdef NDEBUG
         continuing      = ask_continue();
 #else
         continuing      = 1;
@@ -167,25 +153,20 @@ int main(void)
 
 
         // Add the profit to the player's credits
-        if ( (player.gain + player.credits) <= 0 )
+        if ( (player_get_gain(player) + player_get_credits(player)) <= 0 )
         {
-            player.credits = 0;
-        }
-        else
-        {
-            player.credits += player.gain;
-        }
-    }
-    while ( continuing && (player.credits > 0) );
-
-    if ( continuing && (player.credits == 0) )
-    {
-        fprintf(stderr, _("Impossible to continue, you have 0 credits.\n") );
-
+            fprintf(stderr, _("Impossible to continue, you have 0 credits.\n") );
 #ifdef EASTER_EGG
         fprintf(stderr, _("GET OUT OF MY CASINO!!\n") );
 #endif
+            player_unref(&player);
+        }
+        else
+        {
+            player_add_gain_to_credits(player);
+        }
     }
+    while ( continuing && player );
 
     return (0);
 }

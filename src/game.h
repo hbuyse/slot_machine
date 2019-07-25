@@ -40,16 +40,6 @@ unsigned char ask_continue(void);
 
 
 /**
- * @brief      Get the bet from the stdin
- *
- * @param[in]  Current credits from the player
- *
- * @return     The bet.
- */
-unsigned char get_bet(unsigned short credits);
-
-
-/**
  * @brief      Get a random number using a modulo.
  *
  * @param[in]  modulo  Modulo of the random number

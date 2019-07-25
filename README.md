@@ -14,7 +14,7 @@ Rules of the game
 At the beginning of the game, the player has to deposit a certain number of credits (example: 100 credits).
 After each play, the player choose to bet 1, 2 or 3 credits.
 Then, the machine prints the gain in function of the combination which has appeared.
-Of course, the obtained gain crrespond to the base gain of the combination multiply by the number of credits betted by 
+Of course, the obtained gain corresponds to the base gain of the combination multiply by the number of credits betted by 
 the player.
 The game continues while the player wishes it and that his credits are positive.
 The game automatically ends when the player has no more credits.
